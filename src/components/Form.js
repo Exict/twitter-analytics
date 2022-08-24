@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ButtonStyle } from "../styles/Buttons.styles";
 import { saveReportData } from "../utils/db";
 import { Report } from "./Report";
 
@@ -25,23 +24,19 @@ export default function Form() {
 
   return (
     <>
-    <form onSubmit={submitForm} className="flex max-w-xs">
-      <input 
-        placeholder="Twitter Username (without @)" 
-        onChange={
-          event => setUsername(event.target.value)
-        }
-        className="mt-3 rounded-md shadow-md px-4 py-3"
-      />
-      <button className={ButtonStyle('primary')}>Submit</button>
-    </form>
-    <button 
-      className={ButtonStyle('primary')}
-      disabled={!data}
-      onClick={saveReport}
-    >
-      Save Report
-    </button>
+<nav class="bg-gray-900">
+  <div class="flex space-x-4">
+    <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Twitter Analytics</a>
+
+  <form onSubmit={submitForm}>   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
+    <div class="relative">
+        <input type="search" id="default-search" placeholder="Search Twitter User" className="w-96 bg-gray-800 text-white" required onChange={event => setUsername(event.target.value)}></input>
+        <button type="submit"  class="bg-blue-900 hover:bg-blue-900 text-white font-bold py-2 px-4 border border-blue-800 rounded">Search</button>
+    </div>
+</form>
+</div>
+</nav>
     <Report data={data}/>
     </>
   );
